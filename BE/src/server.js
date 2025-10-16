@@ -1,3 +1,5 @@
+// bootstraps the server (reads PORT, listen)
+
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
@@ -14,7 +16,7 @@ const RAPIDAPI_BASE = process.env.RAPIDAPI_BASE;
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
-app.get("/api/standings", async (req, res) => {
+app.get("/api/standingsEPL", async (req, res) => {
   try {
     const { tournamentId = 17, seasonId = 29415, type = "total" } = req.query;
 

@@ -1,0 +1,4 @@
+PORT=4000
+RAPIDAPI_KEY=YOURRAPIDAPIKEY
+RAPIDAPI_HOST=sofascore.p.rapidapi.com
+RAPIDAPI_BASE=https://sofascore.p.rapidapi.com
