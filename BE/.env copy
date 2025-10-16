@@ -1,4 +1,12 @@
+# Server
 PORT=4000
-RAPIDAPI_KEY=YOURRAPIDAPIKEY
-RAPIDAPI_HOST=sofascore.p.rapidapi.com
-RAPIDAPI_BASE=https://sofascore.p.rapidapi.com
+
+# Sofascore API 
+SOFA_KEY=***
+SOFA_HOST=sofascore.p.rapidapi.com
+SOFA_BASE=https://sofascore.p.rapidapi.com
+
+# SportAPI 
+SPORTAPI_KEY=***
+SPORTAPI_HOST=sportapi7.p.rapidapi.com
+SPORTAPI_BASE=https://sportapi7.p.rapidapi.com

@@ -1,11 +1,20 @@
 import axios from "axios";
 import { config } from "../config/index.js";
 
-export const rapid = axios.create({
-  baseURL: config.rapidapi.baseURL,
-  timeout: config.rapidapi.timeoutMs,
+export const sofascore = axios.create({
+  baseURL: config.sofascore.baseURL,
+  timeout: config.sofascore.timeoutMs,
   headers: {
-    "x-rapidapi-host": config.rapidapi.host,
-    "x-rapidapi-key": config.rapidapi.key,
+    "x-rapidapi-host": config.sofascore.host,
+    "x-rapidapi-key": config.sofascore.key,
   },
 });
+
+export const sportapi = axios.create({
+  baseURL: config.sportapi.baseURL,
+  timeout: config.sportapi.timeoutMs,
+  headers: {
+    "x-rapidapi-host": config.sportapi.host,
+    "x-rapidapi-key": config.sportapi.key,
+  }
+})
