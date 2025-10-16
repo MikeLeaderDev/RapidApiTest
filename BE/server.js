@@ -1,4 +1,3 @@
-cat > server.js << 'EOF'
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
@@ -18,6 +17,7 @@ app.get("/health", (_req, res) => res.json({ ok: true }));
 app.get("/api/standings", async (req, res) => {
   try {
     const { tournamentId = 17, seasonId = 29415, type = "total" } = req.query;
+
     const response = await axios.get(`${RAPIDAPI_BASE}/tournaments/get-standings`, {
       params: { tournamentId, seasonId, type },
       headers: {
@@ -26,6 +26,7 @@ app.get("/api/standings", async (req, res) => {
       },
       timeout: 15000,
     });
+
     res.json(response.data);
   } catch (error) {
     console.error(error?.response?.data || error.message);
@@ -37,4 +38,3 @@ app.get("/api/standings", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`BE running on http://localhost:${PORT}`));
-EOF
