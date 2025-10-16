@@ -1,40 +1,10 @@
-const express = require("express");
-const axios = require("axios");
-const cors = require("cors");
-require("dotenv").config();
+import { Router } from "express";
+import { standingsEPL } from "../controllers/standings.controller.js";
+import { validateQuery, standingsQuerySchema } from "../middlewares/validate.js";
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const router = Router();
 
-const PORT = process.env.PORT || 4000;
-const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
-const RAPIDAPI_HOST = process.env.RAPIDAPI_HOST;
-const RAPIDAPI_BASE = process.env.RAPIDAPI_BASE;
+// GET /api/standingsEPL?tournamentId=17&seasonId=29415&type=total
+router.get("/standingsEPL", validateQuery(standingsQuerySchema), standingsEPL);
 
-app.get("/health", (_req, res) => res.json({ ok: true }));
-
-app.get("/api/standingsEPL", async (req, res) => {
-  try {
-    const { tournamentId = 17, seasonId = 29415, type = "total" } = req.query;
-
-    const response = await axios.get(`${RAPIDAPI_BASE}/tournaments/get-standings`, {
-      params: { tournamentId, seasonId, type },
-      headers: {
-        "x-rapidapi-host": RAPIDAPI_HOST,
-        "x-rapidapi-key": RAPIDAPI_KEY,
-      },
-      timeout: 15000,
-    });
-
-    res.json(response.data);
-  } catch (error) {
-    console.error(error?.response?.data || error.message);
-    res.status(error?.response?.status || 500).json({
-      error: "Failed to fetch standings",
-      detail: error?.response?.data || error.message,
-    });
-  }
-});
-
-app.listen(PORT, () => console.log(`BE running on http://localhost:${PORT}`));
+export default router;
