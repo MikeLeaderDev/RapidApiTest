@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { teamDetail } from "../controllers/teams.controller.js";
+import { teamDetail } from "../controllers/teamDetail.controller.js";
 // optional validation:
 // import { validateQuery } from "../middlewares/validate.js";
 // import { teamDetailQuerySchema } from "../schemas/teams.schema.js";

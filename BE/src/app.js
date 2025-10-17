@@ -6,6 +6,8 @@ import morgan from "morgan";
 import routes from "./routes/index.js";
 import { notFound } from "./middlewares/notFound.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
+import { sanitizeQuery } from "./middlewares/sanitize.js";
+
 
 export function createApp() {
   const app = express();
@@ -13,6 +15,7 @@ export function createApp() {
   app.use(cors());
   app.use(express.json());
   app.use(morgan("dev"));
+  app.use(sanitizeQuery); 
 
   app.get("/health", (_req, res) => res.json({ ok: true }));
 
